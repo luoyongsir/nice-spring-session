@@ -29,4 +29,4 @@ web.xml 中配置过滤器
 #session 存活时间，默认是30分钟<br/>
 session.maxSeconds=1800<br/>
 #session 存储在redis中的命名空间<br/>
-session.redisNamespace=a\:b\:c<br/>
+session.redisNamespace=a``:``b``:``c<br/>
