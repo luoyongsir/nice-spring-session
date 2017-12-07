@@ -1,5 +1,5 @@
 
-## 分布式web工程利用 spring-session 共享 session 到 redis cluster
+## 分布式web工程用redis-cluster共享session
 
 使用方法如下：
 
@@ -11,7 +11,7 @@ pom.xml 添加依赖
         <version>1.0.0-RELEASE</version>
     </dependency>
 
-
+<br/>
 web.xml 中配置过滤器
 
     <filter>
@@ -23,7 +23,22 @@ web.xml 中配置过滤器
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-<br/><br/>
+<br/>
+配置文件添加
+
+#redis 可选配置<br/>
+redis.minIdle=10<br/>
+redis.maxIdle=50<br/>
+redis.maxTotal=100<br/>
+redis.maxWaitMillis=3000<br/>
+redis.testOnBorrow=true<br/>
+redis.maxRedirects=3<br/>
+redis.password=password<br/>
+
+#redis 必填配置<br/>
+redis.nodes=ip:port1,ip:port2,ip:port3,ip:port4,ip:port5,ip:port6<br/>
+
+<br/>
 下面两个是可选的配置
 
 #session 存活时间，默认是30分钟<br/>
