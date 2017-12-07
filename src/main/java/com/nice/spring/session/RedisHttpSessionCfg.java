@@ -19,13 +19,13 @@ public class RedisHttpSessionCfg {
 	 * session 在 redis cluster 缓存中最长时间<br/>
 	 * 可以不设置，默认值是1800秒
 	 */
-	@Value("${session.maxSeconds}")
+	@Value("${session.maxSeconds:1800}")
 	private Integer maxInactiveIntervalInSeconds;
 	/**
 	 * redis namespace <br/>
 	 * 可以不设置
 	 */
-	@Value("${session.redisNamespace}")
+	@Value("${session.redisNamespace:\"\"}")
 	private String redisNamespace;
 
 	/**
