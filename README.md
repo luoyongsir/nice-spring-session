@@ -3,28 +3,8 @@
 
 使用方法如下：
 
-pom.xml 添加依赖
-
-    <dependency>
-        <groupId>com.nice</groupId>
-        <artifactId>nice-spring-session</artifactId>
-        <version>1.0.0-RELEASE</version>
-    </dependency>
-
 <br/>
-web.xml 中配置过滤器
-
-    <filter>
-        <filter-name>springSessionRepositoryFilter</filter-name>
-        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>springSessionRepositoryFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-
-<br/>
-配置文件添加
+1.添加配置文件
 
 #redis 可选配置<br/>
 redis.minIdle=10<br/>
@@ -45,3 +25,41 @@ redis.nodes=ip:port1,ip:port2,ip:port3,ip:port4,ip:port5,ip:port6<br/>
 session.maxSeconds=1800<br/>
 #session 存储在redis中的命名空间<br/>
 session.redisNamespace=a``:``b``:``c<br/>
+
+<br/>
+2.pom.xml 添加依赖
+
+    <dependency>
+        <groupId>com.nice</groupId>
+        <artifactId>nice-spring-session</artifactId>
+        <version>1.0.0-RELEASE</version>
+    </dependency>
+
+<br/>
+3.如果是spring 项目,web.xml 中配置过滤器
+
+    <filter>
+        <filter-name>springSessionRepositoryFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>springSessionRepositoryFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+<br/>
+如果是spring boot项目，没有web.xml
+
+    @Bean
+	public FilterRegistrationBean springSessionRepositoryFilter() {
+        DelegatingFilterProxy delegatingFilterProxy = new DelegatingFilterProxy();
+        FilterRegistrationBean bean = new FilterRegistrationBean();
+        bean.setFilter(delegatingFilterProxy);
+        bean.addUrlPatterns(DEFAULT_URL_MAPPINGS);
+        bean.setDispatcherTypes(DispatcherType.REQUEST);
+        bean.setDispatcherTypes(DispatcherType.ERROR);
+        return bean;
+	}
+
+	配置文件添加
+	spring.session.store-type=redis
