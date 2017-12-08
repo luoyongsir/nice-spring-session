@@ -36,7 +36,7 @@ session.redisNamespace=a``:``b``:``c<br/>
     </dependency>
 
 <br/>
-3.如果是spring 项目,web.xml 中配置过滤器
+3.如果是spring 项目，web.xml 中配置过滤器
 
     <filter>
         <filter-name>springSessionRepositoryFilter</filter-name>
@@ -47,7 +47,6 @@ session.redisNamespace=a``:``b``:``c<br/>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-<br/>
 如果是spring boot项目，没有web.xml
 
     @Bean
@@ -55,7 +54,7 @@ session.redisNamespace=a``:``b``:``c<br/>
         DelegatingFilterProxy delegatingFilterProxy = new DelegatingFilterProxy();
         FilterRegistrationBean bean = new FilterRegistrationBean();
         bean.setFilter(delegatingFilterProxy);
-        bean.addUrlPatterns(DEFAULT_URL_MAPPINGS);
+        bean.addUrlPatterns("/*");
         bean.setDispatcherTypes(DispatcherType.REQUEST);
         bean.setDispatcherTypes(DispatcherType.ERROR);
         return bean;
