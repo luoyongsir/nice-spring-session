@@ -3,8 +3,8 @@ package com.nice.spring.session;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 /**
@@ -12,7 +12,7 @@ import org.springframework.util.StringUtils;
  * @author Luo Yong
  * @date 2017-03-12
  */
-@Component
+@Configuration
 public class RedisHttpSessionCfg {
 
 	/**
@@ -25,7 +25,7 @@ public class RedisHttpSessionCfg {
 	 * redis namespace <br/>
 	 * 可以不设置
 	 */
-	@Value("${session.redisNamespace:\"\"}")
+	@Value("${session.redisNamespace:}")
 	private String redisNamespace;
 
 	/**
@@ -59,8 +59,5 @@ public class RedisHttpSessionCfg {
 
 	public void setRedisNamespace(String redisNamespace) {
 		this.redisNamespace = redisNamespace;
-	}
-
-	private RedisHttpSessionCfg() {
 	}
 }
