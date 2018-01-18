@@ -49,15 +49,7 @@ public class RedisHttpSessionCfg {
 		return maxInactiveIntervalInSeconds;
 	}
 
-	public void setMaxInactiveIntervalInSeconds(Integer maxInactiveIntervalInSeconds) {
-		this.maxInactiveIntervalInSeconds = maxInactiveIntervalInSeconds;
-	}
-
 	public String getRedisNamespace() {
 		return redisNamespace;
-	}
-
-	public void setRedisNamespace(String redisNamespace) {
-		this.redisNamespace = redisNamespace;
 	}
 }
