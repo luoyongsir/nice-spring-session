@@ -1,4 +1,3 @@
-
 package com.nice.spring.session;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -30,7 +29,6 @@ public class RedisHttpSessionCfg {
 
 	/**
 	 * 初始化 redisHttpSessionConfiguration注入bean到Spring
-	 * @return
 	 */
 	@Bean
 	public RedisHttpSessionConfiguration redisHttpSessionConfiguration() {
@@ -45,11 +43,11 @@ public class RedisHttpSessionCfg {
 		return redisHttpSessionConfiguration;
 	}
 
-	public Integer getMaxInactiveIntervalInSeconds() {
+	private Integer getMaxInactiveIntervalInSeconds() {
 		return maxInactiveIntervalInSeconds;
 	}
 
-	public String getRedisNamespace() {
+	private String getRedisNamespace() {
 		return redisNamespace;
 	}
 }
