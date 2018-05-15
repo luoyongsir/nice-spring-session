@@ -32,7 +32,7 @@ session.redisNamespace=a``:``b``:``c<br/>
     <dependency>
         <groupId>com.nice</groupId>
         <artifactId>nice-spring-session</artifactId>
-        <version>1.0.1-RELEASE</version>
+        <version>latest.version</version>
     </dependency>
 
 <br/>
